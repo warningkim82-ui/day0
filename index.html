@@ -16,15 +16,154 @@
         body {
             margin: 0;
             padding: 0;
-            height: 100vh;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+            font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Segoe UI', Roboto, sans-serif;
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            padding: 1.25rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        header nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        header nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        section {
+            padding: 5rem 2.5rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
-            font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Segoe UI', Roboto, sans-serif;
-            color: var(--text-main);
-            overflow: hidden;
+            min-height: 60vh;
+        }
+
+        .features-section {
+            background-color: transparent;
+        }
+
+        .reviews-section {
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #1e293b;
+        }
+
+        .reviews-container {
+            display: flex;
+            gap: 2rem;
+            max-width: 1000px;
+            width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: transform 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .user-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #3b82f6;
+        }
+
+        .user-name {
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .review-text {
+            color: #475569;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        footer {
+            background-color: #f1f5f9;
+            color: #64748b;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 0.875rem;
+            border-top: 1px solid #e2e8f0;
         }
 
         .container {
@@ -105,12 +244,49 @@
 </head>
 
 <body>
-    <div class="blob"></div>
-    <div class="container">
-        <p class="subtitle">Daily Inspiration</p>
-        <h1 id="main-sentence">오늘도 힘내세요!</h1>
-        <button class="next-btn" onclick="nextSentence()">다음 문장 보기</button>
-    </div>
+    <header>
+        <h2>나의 첫 서비스</h2>
+        <nav>
+            <a href="#">소개</a>
+            <a href="#">기능</a>
+            <a href="#">문의</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="features-section">
+            <div class="blob"></div>
+            <div class="container">
+                <p class="subtitle">Core Features</p>
+                <h1 id="main-sentence">오늘도 힘내세요!</h1>
+                <button class="next-btn" onclick="nextSentence()">다음 문장 보기</button>
+            </div>
+        </section>
+
+        <section class="reviews-section">
+            <h2 class="section-title">사용자 후기</h2>
+            <div class="reviews-container">
+                <div class="review-card">
+                    <div class="user-info">
+                        <img src="user_profile_1_1773666193676.png" alt="User 1" class="user-image">
+                        <span class="user-name">김철수 님</span>
+                    </div>
+                    <p class="review-text">"이 서비스를 사용하고 나서 매일 아침이 즐거워졌습니다. 정말 추천해요!"</p>
+                </div>
+                <div class="review-card">
+                    <div class="user-info">
+                        <img src="user_profile_2_1773666223871.png" alt="User 2" class="user-image">
+                        <span class="user-name">이영희 님</span>
+                    </div>
+                    <p class="review-text">"깔끔한 디자인과 직관적인 기능이 마음에 듭니다. 앞으로도 기대되네요."</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 My Service</p>
+    </footer>
 
     <script>
         const sentences = [
